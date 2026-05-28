@@ -1,0 +1,77 @@
+{
+	"name": "edl",
+	"patterns": [
+		{ "include": "#comments" },
+		{ "include": "#keywords" },
+		{ "include": "#locals" },
+		{ "include": "#literals" },
+		{ "include": "#functions" }
+	],
+	"repository": {
+		"comments": {
+			"name": "comment.line.edl",
+			"match": "//.*$"
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.edl",
+					"match": "\\b(eval|set|print(ln)?|function|import|and|or|not|len)\\b"
+				},
+				{
+					"name": "keyword.control.edl",
+					"match": "\\b(if(-else)?|while|match|throw|catch)\\b"
+				},
+				{
+					"name": "keyword.operator.edl",
+					"match": "(?<![0-9a-zA-Z_@$+\\-*=?%><:])(\\+|\\-|\\*|\\/|==|<>|<=|>=|<|>|@|::|\\||<-|->)(?![0-9a-zA-Z_@$+\\-*=?%><:])"
+				}
+			]
+		},
+		"locals": {
+			"name": "variable.edl",
+			"match": "(\\$)\\s*[a-zA-Z_@$+\\-*=?%><:][0-9a-zA-Z_@$+\\-*=?%><:]*",
+			"captures": { "1": { "name": "variable.prefix.edl" } }
+		},
+		"literals": {
+			"patterns": [
+				{
+					"name": "constant.language.boolean.edl",
+					"match": "\\b(true|false)\\b"
+				},
+				{
+					"name": "string.quoted.double.edl",
+					"begin": "\"",
+					"end": "$|\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape.edl",
+							"match": "\\\\[nrt]"
+						},
+						{
+							"name": "invalid.illegal.escape.edl",
+							"match": "\\\\."
+						}
+					]
+				},
+				{
+					"name": "string.quoted.single.edl",
+					"match": "'((\\\\[\\\\\"'nrt])|(\\\\.?)|[^'])'",
+					"captures": {
+						"2": { "name": "constant.character.escape.edl" },
+						"3": { "name": "invalid.illegal.escape.edl" }
+					}
+				},
+				{
+					"name": "constant.numeric.edl",
+					"match": "\\b(\\-)?([0-9]+)\\b"
+				}
+			]
+		},
+		"functions": {
+			"match": "(?<=\\(|;|function)\\s*([a-zA-Z_@$+\\-*=?%><:][0-9a-zA-Z_@$+\\-*=?%><:]*)",
+			"captures": { "1": { "name": "entity.name.function.edl" } }
+		}
+	},
+	"scopeName": "source.edl"
+}

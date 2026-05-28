@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Edl.Cli/Edl.Cli.csproj" />
+  <Project Path="Edl.Core/Edl.Core.csproj" />
+  <Project Path="Edl.Tests/Edl.Tests.csproj" />
+</Solution>

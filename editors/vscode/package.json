@@ -1,0 +1,34 @@
+{
+  "name": "edl",
+  "displayName": "EDucational Language",
+  "description": "Nothing to see here",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "edl",
+        "aliases": [
+          "Edl",
+          "edl"
+        ],
+        "extensions": [
+          ".edl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "edl",
+        "scopeName": "source.edl",
+        "path": "./syntaxes/edl.tmLanguage.json"
+      }
+    ]
+  }
+}

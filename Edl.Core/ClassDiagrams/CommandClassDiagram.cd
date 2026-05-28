@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Edl.Core.Interpreter.PushCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Interpreter\Commands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.LoadCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Commands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.StoreCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Commands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.CallCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAACAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Commands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.MakeClosureCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAIgAAAgAAAA=</HashCode>
+      <FileName>Interpreter\Commands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.MakeListCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAIAAAAAAAgAAAA=</HashCode>
+      <FileName>Interpreter\Commands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.IfCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAEAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Commands.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Arithmetics.AddCommand">
+    <Position X="3.25" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Arithmetics\AddCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Arithmetics.DivideCommand">
+    <Position X="10.25" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Arithmetics\DivideCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Arithmetics.MultiplyCommand">
+    <Position X="13.75" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Arithmetics\MultiplyCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Arithmetics.RemainderCommand">
+    <Position X="17.25" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Arithmetics\RemainderCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Arithmetics.SubtractCommand">
+    <Position X="6.75" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Arithmetics\SubtractCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Comparison.EqualsCommand">
+    <Position X="6.75" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Comparison\EqualsCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Comparison.GreaterThanCommand">
+    <Position X="13.75" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Comparison\GreaterThanCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Comparison.GreaterThanOrEqualsProcedure">
+    <Position X="20.75" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Comparison\GreaterThanOrEqualsProcedure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Comparison.LessThanCommand">
+    <Position X="3.25" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Comparison\LessThanCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Comparison.LessThanOrEqualsCommand">
+    <Position X="10.25" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Comparison\LessThanOrEqualsCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Comparison.NotEqualsCommand">
+    <Position X="17.25" Y="2.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Comparison\NotEqualsCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Core.PrintCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="28" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Core\PrintCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.Core.PrintlnCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\Core\PrintlnCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.ComparisonCommand">
+    <Position X="12" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\ComparisonCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Edl.Core.Interpreter.Intrinsics.FileOperationCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Intrinsics\FileOperationCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Edl.Core.Interpreter.ICommand" Collapsed="true">
+    <Position X="24.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interpreter\Commands.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

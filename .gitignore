@@ -1,0 +1,24 @@
+# editors
+.vs/
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# visual studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+*.lscache
+# but keep track of directories ending in .cache
+!?*.[Cc]ache/
+
+# build files
+[Oo]bj/
+[Bb]in/
+artifacts/
+
+# logs
+[Ll]og/
+[Ll]ogs/

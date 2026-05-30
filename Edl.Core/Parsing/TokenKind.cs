@@ -15,6 +15,7 @@ public enum TokenKind
     RiCurly,
     LeBracket,
     RiBracket,
+    ParamBracket,
 
     Semicolon,
 }
@@ -33,6 +34,7 @@ static class TokenKindExt
         TokenKind.RiCurly => "'}'",
         TokenKind.LeBracket => "'['",
         TokenKind.RiBracket => "']'",
+        TokenKind.ParamBracket => "'\\'",
         TokenKind.Semicolon => "';'",
         _ => throw new UnreachableException(),
     };

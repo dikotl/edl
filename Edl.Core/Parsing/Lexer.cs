@@ -105,6 +105,10 @@ public class Lexer(string source, string filename)
             Advance();
             return new Token(TokenKind.RiCurly, start);
 
+        case '\\':
+            Advance();
+            return new Token(TokenKind.ParamBracket, start);
+
         default:
             char ch = Char ?? throw new UnreachableException("Null case handled above");
 

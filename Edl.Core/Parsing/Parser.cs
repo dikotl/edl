@@ -98,7 +98,6 @@ public class Parser(Lexer lexer)
             Expect(TokenKind.RiCurly);
             return new Function
             {
-                // TODO: implement closure parsing.
                 Parameters = [],
                 Body = items,
                 Location = token.LineInfo,
@@ -121,6 +120,22 @@ public class Parser(Lexer lexer)
         case TokenKind.RiCurly:
         case TokenKind.RiBracket:
             throw Error("unexpected closing paren");
+
+        case TokenKind.ParamBracket:
+        {
+            var token = Expect(TokenKind.ParamBracket);
+            var parameters = ParseSequenceUntilDelimiter(ParseName, [TokenKind.ParamBracket]).ToArray();
+            Expect(TokenKind.ParamBracket);
+            var bodyStart = Expect(TokenKind.LeCurly);
+            var body = ParseSequenceUntilDelimiter(() => ParseStatement(true), [TokenKind.RiCurly], TokenKind.Semicolon).ToArray();
+            Expect(TokenKind.RiCurly);
+            return new Function
+            {
+                Parameters = parameters,
+                Body = body,
+                Location = token.LineInfo,
+            };
+        }
 
         case TokenKind.Semicolon:
             throw Error("unexpected semicolon or newline");

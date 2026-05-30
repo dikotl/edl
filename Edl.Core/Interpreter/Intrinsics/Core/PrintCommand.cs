@@ -7,7 +7,7 @@ internal class PrintCommand : IIntrinsic
     {
         foreach (var arg in args)
         {
-            Console.WriteLine(arg.Display());
+            Console.Write(arg.Display());
         }
     }
 }

@@ -16,15 +16,19 @@
 			"patterns": [
 				{
 					"name": "keyword.other.edl",
-					"match": "\\b(eval|set|print(ln)?|function|import|and|or|not|len)\\b"
+					"match": "\\b(print(ln)?|let|return)\\b"
 				},
 				{
 					"name": "keyword.control.edl",
-					"match": "\\b(if(-else)?|while|match|throw|catch)\\b"
+					"match": "\\b(if|else)\\b"
 				},
 				{
 					"name": "keyword.operator.edl",
 					"match": "(?<![0-9a-zA-Z_@$+\\-*=?%><:])(\\+|\\-|\\*|\\/|==|<>|<=|>=|<|>|@|::|\\||<-|->)(?![0-9a-zA-Z_@$+\\-*=?%><:])"
+				},
+				{
+					"name": "punctuation.bracket.edl",
+					"match": "\\\\"
 				}
 			]
 		},
@@ -35,10 +39,6 @@
 		},
 		"literals": {
 			"patterns": [
-				{
-					"name": "constant.language.boolean.edl",
-					"match": "\\b(true|false)\\b"
-				},
 				{
 					"name": "string.quoted.double.edl",
 					"begin": "\"",
@@ -69,7 +69,7 @@
 			]
 		},
 		"functions": {
-			"match": "(?<=\\(|;|function)\\s*([a-zA-Z_@$+\\-*=?%><:][0-9a-zA-Z_@$+\\-*=?%><:]*)",
+			"match": "(?<=\\(|;|^)\\s*([a-zA-Z_@$+\\-*=?%><:][0-9a-zA-Z_@$+\\-*=?%><:]*)",
 			"captures": { "1": { "name": "entity.name.function.edl" } }
 		}
 	},

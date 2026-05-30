@@ -1,0 +1,15 @@
+let fib-tail-rec \n previous current\ {
+    if (== n 0) {
+        previous
+    } else {
+        if (== n 1) {
+            current
+        } else {
+            fib-tail-rec (- n 1) current (+ previous current)
+        }
+    }
+}
+let fib \n\ {
+    fib-tail-rec n 0 1
+}
+println "fibonacci 30: " (fib 30)

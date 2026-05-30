@@ -61,4 +61,4 @@ let initial_row \i\ {
     == i 0
 }
 
-run_automaton initial_row 0 15
+run_automaton initial_row 0 10

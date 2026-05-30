@@ -41,8 +41,8 @@ public sealed class Context
     public void Call(string functionName, int argCount)
     {
         var funcValue = CurrentEnvironment.Load(functionName);
-
         var args = new Value[argCount];
+
         for (int i = argCount - 1; i >= 0; i--)
         {
             args[i] = Pop();
@@ -68,13 +68,14 @@ public sealed class Context
             break;
         }
 
-        case CommandValue commandValue:
-            foreach (var arg in args) Push(arg);
-            commandValue.Command.Execute(this);
+        case IntrinsicValue commandValue:
+            commandValue.Intrinsic.Call(this, args);
             break;
 
         default:
-            throw new InvalidOperationException($"Identifier '{functionName}' is not callable.");
+            // Just push it's value.
+            Push(funcValue);
+            break;
         }
     }
 }

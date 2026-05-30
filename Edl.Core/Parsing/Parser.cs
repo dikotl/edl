@@ -143,14 +143,14 @@ public class Parser(Lexer lexer)
         };
     }
 
-    private Expression ParseStatement(bool inCurly)
+    private Expression? ParseStatement(bool inCurly)
     {
         while (_token?.Kind is TokenKind.Semicolon)
         {
             Next();
         }
 
-        if (IsEOF)
+        if (IsEOF || (inCurly && Kind == TokenKind.RiCurly))
         {
             return null;
         }
@@ -198,7 +198,7 @@ public class Parser(Lexer lexer)
     }
 
     private IEnumerable<T> ParseSequenceUntilDelimiter<T>(
-        Func<T> parser,
+        Func<T?> parser,
         TokenKind[] delimiters,
         TokenKind? separator = null
     )
@@ -211,7 +211,7 @@ public class Parser(Lexer lexer)
 
             try
             {
-                node = parser.Invoke() ?? throw new UnreachableException("parser returned null node");
+                node = parser.Invoke();
             }
             catch (ParseException e)
             {
@@ -229,7 +229,10 @@ public class Parser(Lexer lexer)
                 }
                 if (separatorSkipped || delimiters.Contains(Kind))
                 {
-                    yield return node!;
+                    if (node is not null)
+                    {
+                        yield return node;
+                    }
                     continue;
                 }
 

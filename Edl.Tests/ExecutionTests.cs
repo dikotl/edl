@@ -27,14 +27,14 @@ public class ExecutionTests
                 [
                     new LoadCommand("+"),
                     // fib(n-2)
-                    new LoadCommand("fib"),
+                    new LoadSelfCommand(),
                     new LoadCommand("-"),
                     new LoadCommand("n"),
                     new PushCommand(new IntValue(1)),
                     new CallCommand(2),
                     new CallCommand(1),
                     // fib(n-2)
-                    new LoadCommand("fib"),
+                    new LoadSelfCommand(),
                     new LoadCommand("-"),
                     new LoadCommand("n"),
                     new PushCommand(new IntValue(2)),
@@ -48,10 +48,7 @@ public class ExecutionTests
 
         var context = new Context();
         context.Execute([
-            // Function definition.
             new MakeClosureCommand(["n"], [], fibBody, default),
-            new StoreCommand("fib"),
-            // Function call.
             new PushCommand(new IntValue(input, default)),
             new CallCommand(1),
         ]);

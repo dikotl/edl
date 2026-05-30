@@ -4,8 +4,7 @@
 		{ "include": "#comments" },
 		{ "include": "#keywords" },
 		{ "include": "#locals" },
-		{ "include": "#literals" },
-		{ "include": "#functions" }
+		{ "include": "#literals" }
 	],
 	"repository": {
 		"comments": {
@@ -67,10 +66,6 @@
 					"match": "\\b(\\-)?([0-9]+)\\b"
 				}
 			]
-		},
-		"functions": {
-			"match": "(?<=\\(|;|^)\\s*([a-zA-Z_@$+\\-*=?%><:][0-9a-zA-Z_@$+\\-*=?%><:]*)",
-			"captures": { "1": { "name": "entity.name.function.edl" } }
 		}
 	},
 	"scopeName": "source.edl"

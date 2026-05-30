@@ -53,4 +53,17 @@ public class ExecutionTests
 
         Assert.AreEqual(expectedResult, result.Data);
     }
+
+    [TestMethod]
+    public void PrintIntrinsicReturnsZero()
+    {
+        var context = new Context();
+        context.Execute([
+            new PushCommand(new StringValue("hi", default)),
+            new CallCommand("print", 1),
+        ]);
+
+        var result = (IntValue)context.Pop();
+        Assert.AreEqual(0L, result.Data);
+    }
 }

@@ -43,15 +43,17 @@ public class TranslatorTests
             }
         ]);
 
-        Assert.HasCount(3, commands);
-        Assert.IsInstanceOfType<PushCommand>(commands[0]);
-        Assert.AreEqual(10L, ((IntValue)((PushCommand)commands[0]).Value).Data);
+        Assert.HasCount(4, commands);
+        Assert.IsInstanceOfType<LoadCommand>(commands[0]);
         Assert.IsInstanceOfType<PushCommand>(commands[1]);
-        Assert.AreEqual(20L, ((IntValue)((PushCommand)commands[1]).Value).Data);
-        Assert.IsInstanceOfType<CallCommand>(commands[2]);
+        Assert.AreEqual(10L, ((IntValue)((PushCommand)commands[1]).Value).Data);
+        Assert.IsInstanceOfType<PushCommand>(commands[2]);
+        Assert.AreEqual(20L, ((IntValue)((PushCommand)commands[2]).Value).Data);
+        Assert.IsInstanceOfType<CallCommand>(commands[3]);
 
-        var callCommand = (CallCommand)commands[2];
-        Assert.AreEqual("+", callCommand.FunctionName);
+        var loadCommand = (LoadCommand)commands[0];
+        var callCommand = (CallCommand)commands[3];
+        Assert.AreEqual("+", loadCommand.VariableName);
         Assert.AreEqual(2, callCommand.ArgCount);
         // Assert.AreEqual(_dummyLocation, dispatchCommand.Location);
     }

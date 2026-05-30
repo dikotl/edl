@@ -15,6 +15,7 @@ public class LetMacro : IMacro
             throw new Exception("First argument to 'let' intrinsic must be an identifier.");
         }
 
+        t.Variables[identifier.Name] = VariableSource.Local;
         t.Translate(call.Arguments[1]);
         t.Commands.Add(new StoreCommand(identifier.Name));
     }

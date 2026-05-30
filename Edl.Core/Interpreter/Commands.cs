@@ -15,6 +15,8 @@ public class PushCommand(Value value) : ICommand
     {
         context.Push(Value);
     }
+
+    public override string ToString() => $"push {Value.Display()}";
 }
 
 public class PopCommand : ICommand
@@ -23,6 +25,8 @@ public class PopCommand : ICommand
     {
         _ = context.Pop();
     }
+
+    public override string ToString() => "pop";
 }
 
 public class ReturnCommand : ICommand
@@ -31,6 +35,8 @@ public class ReturnCommand : ICommand
     {
         throw new ReturnException();
     }
+
+    public override string ToString() => "return";
 }
 
 public class LoadCommand(string variableName) : ICommand
@@ -41,6 +47,22 @@ public class LoadCommand(string variableName) : ICommand
     {
         context.Push(context.CurrentEnvironment.Load(VariableName));
     }
+
+    public override string ToString() => $"load {VariableName}";
+}
+
+public class LoadSelfCommand : ICommand
+{
+    public void Execute(Context context)
+    {
+        if (context.CurrentClosure is null)
+        {
+            throw new Exception("cannot load self, not in closure");
+        }
+        context.Push(context.CurrentClosure);
+    }
+
+    public override string ToString() => $"load-self";
 }
 
 public class StoreCommand(string variableName) : ICommand
@@ -51,35 +73,56 @@ public class StoreCommand(string variableName) : ICommand
     {
         context.CurrentEnvironment.Store(VariableName, context.Peek());
     }
+
+    public override string ToString() => $"store {VariableName}";
 }
 
-public class CallCommand(string functionName, int argCount) : ICommand
+public class CallCommand(int argCount) : ICommand
 {
-    public string FunctionName { get; init; } = functionName;
     public int ArgCount { get; init; } = argCount;
 
     public void Execute(Context context)
     {
-        context.Call(FunctionName, ArgCount);
+        context.Call(ArgCount);
     }
+
+    public override string ToString() => $"call {ArgCount}";
 }
 
-public class MakeClosureCommand(string[] parameters, ICommand[] body, LineInfo origin) : ICommand
+public class MakeClosureCommand(string[] parameters, string[] captures, ICommand[] body, LineInfo origin) : ICommand
 {
     public string[] Parameters { get; init; } = parameters;
+    public string[] Captures { get; init; } = captures;
     public ICommand[] CompiledBody { get; init; } = body;
     public LineInfo Origin { get; init; } = origin;
 
     public void Execute(Context context)
     {
+        // TODO: fix captures not include all all variables.
+        var env = context.CurrentEnvironment.Clone();
+        foreach (var capture in Captures)
+        {
+            env.Store(capture, context.CurrentEnvironment.Load(capture));
+        }
         var closure = new ClosureValue
         {
             Parameters = Parameters,
             CompiledBody = CompiledBody,
-            CapturedEnv = context.CurrentEnvironment.Clone(),
+            CapturedEnv = env,
             Origin = Origin,
         };
         context.Push(closure);
+    }
+
+    private int indentCount = 0;
+
+    public override string ToString()
+    {
+        var parameters = string.Join(", ", Parameters);
+        var indent = new string(' ', indentCount += 2);
+        var body = string.Join($"\n{indent}", CompiledBody.Select(cmd => cmd.ToString()));
+        indentCount -= 2;
+        return $"make-closure ({parameters})\n{indent}{body}";
     }
 }
 
@@ -97,6 +140,8 @@ public class MakeListCommand(int elementCount, LineInfo origin) : ICommand
         }
         context.Push(new ListValue(elements, Origin));
     }
+
+    public override string ToString() => $"make-list {ElementCount}";
 }
 
 public class IfCommand(ICommand[] trueBranch, ICommand[] falseBranch) : ICommand
@@ -115,5 +160,16 @@ public class IfCommand(ICommand[] trueBranch, ICommand[] falseBranch) : ICommand
         {
             context.Execute(FalseBranch);
         }
+    }
+    private int indentCount = 0;
+
+    public override string ToString()
+    {
+        var indent = new string(' ', indentCount += 2);
+        var thenBody = string.Join($"\n{indent}", TrueBranch.Select(cmd => cmd.ToString()));
+        var elseBody = string.Join($"\n{indent}", FalseBranch.Select(cmd => cmd.ToString()));
+        indentCount -= 2;
+
+        return $"branch\nthen:\n{indent}{thenBody}\n{indent}{elseBody}";
     }
 }

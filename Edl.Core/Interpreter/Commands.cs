@@ -17,6 +17,22 @@ public class PushCommand(Value value) : ICommand
     }
 }
 
+public class PopCommand : ICommand
+{
+    public void Execute(Context context)
+    {
+        _ = context.Pop();
+    }
+}
+
+public class ReturnCommand : ICommand
+{
+    public void Execute(Context context)
+    {
+        throw new ReturnException();
+    }
+}
+
 public class LoadCommand(string variableName) : ICommand
 {
     public string VariableName { get; init; } = variableName;
@@ -33,7 +49,7 @@ public class StoreCommand(string variableName) : ICommand
 
     public void Execute(Context context)
     {
-        context.CurrentEnvironment.Store(VariableName, context.Pop());
+        context.CurrentEnvironment.Store(VariableName, context.Peek());
     }
 }
 

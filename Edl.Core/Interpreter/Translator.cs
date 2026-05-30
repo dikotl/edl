@@ -8,12 +8,23 @@ public readonly struct Translator()
 
     public readonly List<ICommand> Commands { get; } = [];
     public readonly Dictionary<string, IMacro> Macros { get; init; } = MACROS;
-    // public Dictionary<string, Func<LineInfo, ICommand>> Intrinsics { get; init; } = [];
 
     public static List<ICommand> Translate(IList<Expression> expressions)
     {
         var translator = new Translator();
-        foreach (var expression in expressions) translator.Translate(expression);
+        if (expressions.Count > 0)
+        {
+            foreach (var expression in expressions.SkipLast(1))
+            {
+                translator.Translate(expression);
+                translator.Commands.Add(new PopCommand());
+            }
+            translator.Translate(expressions.Last());
+        }
+        else
+        {
+            translator.Commands.Add(new PushCommand(new IntValue(0)));
+        }
         return translator.Commands;
     }
 
@@ -48,11 +59,6 @@ public readonly struct Translator()
                 {
                     Translate(arg);
                 }
-                // Commands.Add(
-                //     Intrinsics.TryGetValue(call.Function.Name, out var factory)
-                //         ? new DispatchCommand(call.Function.Name, factory(call.Function.Location))
-                //         : new CallCommand(call.Function.Name, call.Arguments.Length)
-                // );
                 Commands.Add(new CallCommand(call.Function.Name, call.Arguments.Length));
             }
             break;

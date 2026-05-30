@@ -63,8 +63,32 @@ public sealed class Context
                     : new IntValue(0, closure.Origin));
             }
 
-            Execute(closure.CompiledBody);
-            CurrentEnvironment = previousEnv;
+            int stackBase = _stack.Count;
+            Value? returnValue = null;
+
+            try
+            {
+                Execute(closure.CompiledBody);
+            }
+            catch (ReturnException)
+            {
+                returnValue = Pop();
+
+                while (_stack.Count > stackBase)
+                {
+                    _stack.Pop();
+                }
+            }
+            finally
+            {
+                CurrentEnvironment = previousEnv;
+            }
+
+            if (returnValue is not null)
+            {
+                Push(returnValue);
+            }
+
             break;
         }
 

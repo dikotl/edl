@@ -46,9 +46,9 @@ public sealed class ClosureValue : Value
     public override string Display() => "<closure>";
 }
 
-public sealed class CommandValue(ICommand command, LineInfo origin = new()) : Value(origin)
+public sealed class IntrinsicValue(IIntrinsic intrinsic, LineInfo origin = new()) : Value(origin)
 {
-    public ICommand Command { get; init; } = command;
+    public IIntrinsic Intrinsic { get; init; } = intrinsic;
 
     public override string Display() => "<command>";
 }

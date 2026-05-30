@@ -1,12 +1,12 @@
 namespace Edl.Core.Interpreter.Intrinsics;
 
-public abstract class ArithmeticsCommand : ICommand
+public abstract class ArithmeticsCommand : IIntrinsic
 {
-    public void Execute(Context vm)
+    public void Call(Context context, Value[] args)
     {
-        var b = vm.Pop();
-        var a = vm.Pop();
-        vm.Push((a, b) switch
+        var a = args[0];
+        var b = args[1];
+        context.Push((a, b) switch
         {
             (IntValue x, IntValue y) => new IntValue(IntOp(x.Data, y.Data)),
             (FloatValue x, FloatValue y) => new FloatValue(FloatOp(x.Data, y.Data)),

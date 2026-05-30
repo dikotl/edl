@@ -1,10 +1,13 @@
 namespace Edl.Core.Interpreter.Intrinsics.Core;
 
 [Intrinsic("print")]
-internal class PrintCommand : ICommand
+internal class PrintCommand : IIntrinsic
 {
-    public void Execute(Context context)
+    public void Call(Context _, Value[] args)
     {
-        Console.Write(context.Pop().Display());
+        foreach (var arg in args)
+        {
+            Console.WriteLine(arg.Display());
+        }
     }
 }

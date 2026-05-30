@@ -2,16 +2,16 @@ namespace Edl.Core.Interpreter;
 
 public sealed class Context
 {
-    private static readonly Dictionary<string, ICommand> INTRINSICS = Registry.Load<ICommand, IntrinsicAttribute>();
+    private static readonly Dictionary<string, IIntrinsic> Intrinsics = Registry.Load<IIntrinsic, IntrinsicAttribute>();
     private readonly Stack<Value> _stack = new();
 
     public Environment CurrentEnvironment { get; set; } = new();
 
     public Context()
     {
-        foreach (var (intrinsicName, command) in INTRINSICS)
+        foreach (var (intrinsicName, intrinsic) in Intrinsics)
         {
-            CurrentEnvironment.Store(intrinsicName, new CommandValue(command));
+            CurrentEnvironment.Store(intrinsicName, new IntrinsicValue(intrinsic));
         }
     }
 

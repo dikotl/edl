@@ -1,6 +1,6 @@
 namespace Edl.Core.Interpreter.Intrinsics;
 
-public abstract class FileOperationCommand : ICommand
+public abstract class FileOperationCommand : IIntrinsic
 {
     // internal required string Filename { get; set; }
 
@@ -13,7 +13,7 @@ public abstract class FileOperationCommand : ICommand
     //     Filename = filename.Value;
     // }
 
-    public void Execute(Context vm)
+    public void Call(Context context, Value[] args)
     {
         // try
         // {

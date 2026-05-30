@@ -5,7 +5,7 @@ let fib-tail-rec \n previous current\ {
         if (== n 1) {
             current
         } else {
-            fib-tail-rec (- n 1) current (+ previous current)
+            self (- n 1) current (+ previous current)
         }
     }
 }

@@ -2,7 +2,7 @@ let fib \n\ {
     if (<= n 1) {
         n
     } else {
-        + (fib (- n 1)) (fib (- n 2))
+        + (self (- n 1)) (self (- n 2))
     }
 }
 println "fibonacci 30: " (fib 30)

@@ -18,7 +18,7 @@ public class ExecutionTests
         var fibBody = new ICommand[]
         {
             new LoadCommand("n"),
-            new PushCommand(new IntValue(2)),
+            new PushCommand(new IntValue(1)),
             new CallCommand("<=", 2),
             new IfCommand(
                 trueBranch: [new LoadCommand("n")],

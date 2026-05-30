@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Cocona;
 using Edl.Core.Ast;
 using Edl.Core.Interpreter;
@@ -10,7 +11,7 @@ class Program
         CoconaApp.Run(Run, args);
     }
 
-    static int Run([Argument] string filename)
+    static int Run([Argument] string filename, [Option("time", ['t'])] bool? time)
     {
         filename = Path.GetFullPath(filename);
         var source = File.ReadAllText(filename);
@@ -38,9 +39,23 @@ class Program
         if (hasParsingErrors) return 1;
 
         var commands = Translator.Translate(expressions);
-        var vm = new Context();
+        var context = new Context();
 
-        vm.Execute(commands);
+        var watch = new Stopwatch();
+        if (time is true)
+        {
+            watch.Start();
+        }
+
+        context.Execute(commands);
+
+        if (time is true)
+        {
+            watch.Stop();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Error.WriteLine($"execution time: {watch.Elapsed:mm\\:ss\\.fff}");
+            Console.ResetColor();
+        }
 
         return 0;
     }

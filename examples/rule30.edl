@@ -1,0 +1,64 @@
+let range \end body\ {
+    let step \i\ {
+        if (< i end) {
+            body i
+            self (+ i 1)
+        }
+    }
+    step 0
+}
+
+// Rule 30 truth table implemented entirely with ifs
+let rule30 \l c r\ {
+    if (== l 1) {
+        if (== c 1) {
+            0
+        } else {
+            if (== r 1) { 0 } else { 1 }
+        }
+    } else {
+        if (== c 1) {
+            1
+        } else {
+            if (== r 1) { 1 } else { 0 }
+        }
+    }
+}
+
+// Takes a closure `row` and returns a NEW closure representing the next generation.
+// This new closure captures the previous `row` environment.
+let next_row \row\ {
+    \i\ {
+        (rule30 (row (- i 1)) (row i) (row (+ i 1)))
+    }
+}
+
+// Recursively iterates horizontally to print the cells for a single generation.
+// Assumes a `print` function exists for output without a newline.
+let print_cells \row i max_i\ {
+    if (<= i max_i) {
+        print (if (row i) "█" else " ")
+        self row (+ i 1) max_i
+    } else {
+        println // end of row, print a newline
+    }
+}
+
+// Recursively iterates vertically through time (generations).
+let run_automaton \row gen max_gen\ {
+    if (<= gen max_gen) {
+        // Print the current row from `-max_gen` to `+max_gen` so the triangle fits.
+        print_cells row (- 0 max_gen) max_gen
+
+        // Recurse with the newly generated row closure.
+        self (next_row row) (+ gen 1) max_gen
+    }
+}
+
+// The starting state: a closure representing an infinite grid.
+// It returns 1 only at the center index (0), and 0 everywhere else.
+let initial_row \i\ {
+    == i 0
+}
+
+run_automaton initial_row 0 15

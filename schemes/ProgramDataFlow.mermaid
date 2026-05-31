@@ -1,0 +1,26 @@
+flowchart TD
+    Source["Вихідний код (.edl)"]
+    Lexer["Лексичний аналізатор <br> «Lexer(source, filename)» → набір токенів"]
+    Parser["Синтаксичний аналізатор <br> «Parse()» → AST"]
+    Translator["Транслятор <br> «Translate(expressions)» → набір команд"]
+    Context["Стекова машина <br> «Context»"]
+    Environment["Оточення <br> «Environment» + «Intrinsics»"]
+    Execute["Цикл обчислень <br> «context.Execute(commands)»"]
+    End["Кінець програми"]
+
+    Source --> Lexer
+    Lexer --> Parser
+    Parser --> Translator
+    Translator --> Context
+    Environment --> Context
+    Context --> Execute
+    Execute --> Context
+    Execute --> End
+
+    subgraph Реєстр
+        Macros["Реєстр макросів"]
+        Intrinsics["Реєстр вбудованих функцій"]
+    end
+
+    Macros --> Translator
+    Intrinsics --> Environment

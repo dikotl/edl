@@ -1,0 +1,136 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="6IAYf4A21KLaCPK_Xi9L">
+    <mxGraphModel dx="1488" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-1" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;" value="Початок" vertex="1">
+          <mxGeometry height="40" width="100" x="375" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-2" parent="1" style="whiteSpace=wrap;strokeWidth=2;" value="Пропустити крапоки з комою" vertex="1">
+          <mxGeometry height="60" width="220" x="315" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-3" parent="1" style="rhombus;strokeWidth=2;whiteSpace=wrap;" value="Кінець файлу?" vertex="1">
+          <mxGeometry height="130" width="130" x="360" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-4" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;" value="Завершити парсинг" vertex="1">
+          <mxGeometry height="40" width="180" x="30" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-5" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;" value="Кінець" vertex="1">
+          <mxGeometry height="40" width="100" x="375" y="1300" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-6" parent="1" style="whiteSpace=wrap;strokeWidth=2;" value="Пропустити крапоки з комою" vertex="1">
+          <mxGeometry height="54" width="241" x="400" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-7" parent="1" style="rhombus;strokeWidth=2;whiteSpace=wrap;" value="Кінець файлу або блоку?" vertex="1">
+          <mxGeometry height="130" width="130" x="455.5" y="485" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-8" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;" value="Повернути «null»" vertex="1">
+          <mxGeometry height="40" width="180" x="270" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-9" parent="1" style="whiteSpace=wrap;strokeWidth=2;" value="Повернути вузол AST &#xa; та список накопичених помилок" vertex="1">
+          <mxGeometry height="60" width="200" x="500" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-11" parent="1" style="rhombus;strokeWidth=2;whiteSpace=wrap;" value="Отриманий вираз &#xa; це «Ast.Identifier»?" vertex="1">
+          <mxGeometry height="130" width="130" x="677.5" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-12" parent="1" style="whiteSpace=wrap;strokeWidth=2;" value="delimiters = if inCurly &#xa; then [Semicolon, RiCurly] &#xa; else [Semicolon]" vertex="1">
+          <mxGeometry height="60" width="200" x="500" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-14" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;" value="Повернути «Ast.Call»" vertex="1">
+          <mxGeometry height="40" width="180" x="510" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-15" parent="1" style="rounded=1;whiteSpace=wrap;arcSize=50;strokeWidth=2;" value="Повернути базовий вираз" vertex="1">
+          <mxGeometry height="40" width="180" x="750" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-16" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-1" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;" target="QUBUG-P2H_onvvO7cm8d-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-17" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-2" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="QUBUG-P2H_onvvO7cm8d-3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-18" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-3" style="startArrow=none;endArrow=block;exitX=0;exitY=0.5;entryX=0.5;entryY=-0.01;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;" target="QUBUG-P2H_onvvO7cm8d-4" value="Так">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-19" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-4" style="startArrow=none;endArrow=block;exitX=0.5;exitY=0.99;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;entryDx=0;entryDy=0;" target="QUBUG-P2H_onvvO7cm8d-5" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120" y="1240" />
+              <mxPoint x="425" y="1240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-20" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-3" style="startArrow=none;endArrow=block;exitX=1;exitY=0.5;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="QUBUG-P2H_onvvO7cm8d-6" value="Ні">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-21" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-6" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1.01;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;entryDx=0;entryDy=0;" target="QUBUG-P2H_onvvO7cm8d-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-22" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-7" style="startArrow=none;endArrow=block;exitX=0;exitY=0.5;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;" target="QUBUG-P2H_onvvO7cm8d-8" value="Так">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-23" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-8" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;rounded=0;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="QUBUG-P2H_onvvO7cm8d-9" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="1110" />
+              <mxPoint x="600" y="1110" />
+            </Array>
+            <mxPoint x="600" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-24" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-7" style="startArrow=none;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="QUBUG-P2H_onvvO7cm8d-35" value="Ні">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="550.0000000000002" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-25" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-35" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;" target="QUBUG-P2H_onvvO7cm8d-11" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="742.5" y="577" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-26" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-11" style="startArrow=none;endArrow=block;exitX=0;exitY=0.5;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;" target="QUBUG-P2H_onvvO7cm8d-12" value="Так">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-27" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-12" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;entryDx=0;entryDy=0;" target="QUBUG-P2H_onvvO7cm8d-34" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520.5000000000002" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-28" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-34" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;" target="QUBUG-P2H_onvvO7cm8d-14" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520.5000000000002" y="550" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-29" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-14" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;" target="QUBUG-P2H_onvvO7cm8d-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-30" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-11" style="startArrow=none;endArrow=block;exitX=1;exitY=0.5;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;exitDx=0;exitDy=0;" target="QUBUG-P2H_onvvO7cm8d-15" value="Ні">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-31" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-15" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;rounded=0;edgeStyle=orthogonalEdgeStyle;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="QUBUG-P2H_onvvO7cm8d-9" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="840" y="1110" />
+              <mxPoint x="600" y="1110" />
+            </Array>
+            <mxPoint x="600" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-32" edge="1" parent="1" source="QUBUG-P2H_onvvO7cm8d-9" style="startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;edgeStyle=orthogonalEdgeStyle;entryDx=0;entryDy=0;" target="QUBUG-P2H_onvvO7cm8d-5" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="1240" />
+              <mxPoint x="425" y="1240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-34" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;size=0.03125;" value="ParseSequenceUntilDelimiter(ParseExpression, delimiters)" vertex="1">
+          <mxGeometry height="60" width="340" x="430" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="QUBUG-P2H_onvvO7cm8d-35" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="ParseExpression()" vertex="1">
+          <mxGeometry height="60" width="160" x="662.5" y="520" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

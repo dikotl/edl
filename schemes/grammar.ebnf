@@ -1,0 +1,31 @@
+(* Parser Grammar *)
+Program            = {StatementSeparator | Statement} ;
+Statement          = CallStatement | Expression ;
+CallStatement      = Identifier, {Expression} ;
+Expression         = Literal | Identifier | CallExpression | Function | ExpressionList ;
+Literal            = IntLiteral | FloatLiteral | StringLiteral ;
+CallExpression     = '(', Identifier, {Expression}, ')' ;
+Function           = [FunctionParameters], Block ;
+FunctionParameters = '\\', {Identifier}, '\\' ;
+Block              = '{', Program, '}' ;
+ExpressionList     = '[', {Expression}, ']' ;
+
+(* Lexer Grammar *)
+StatementSeparator = ';' | '\n' ;
+Identifier         = (Letter | SymbolChar) , {Letter | Digit | SymbolChar} ;
+StringLiteral      = '"', StringChar, '"' ;
+StringChar         = ? UTF-8 code point ? | StringCharEscape ;
+StringCharEscape   = '\', ('n' | 'r' | 't') ;
+IntLiteral         = BinInt | HexInt | Number ;
+FloatLiteral       = Number, FloatLiteralSuffix ;
+FloatLiteralSuffix = ('.', Number, [Exponent]) | Exponent ;
+Number             = '0' | '1'..'9', {['_'], Digit} ;
+Exponent           = ('e' | 'E'), ['+' | '-'], Number ;
+BinInt             = '0b', ['_'], BinDigit, {['_'], BinDigit} ;
+HexInt             = '0x', ['_'], HexDigit, {['_'], HexDigit} ;
+Letter             = 'a'..'z' | 'A'..'Z' ;
+Digit              = '0'..'9' ;
+BinDigit           = '0'..'1' ;
+HexDigit           = '0'..'9' | 'a'..'f' | 'A'..'F' ;
+SymbolChar         = '$' | '_' | '=' | '<' | '>' | '+' | '-'
+                   | '*' | '/' | '!' | '%' | '^' | '&' | '|' ;

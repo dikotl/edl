@@ -1,7 +1,7 @@
 flowchart TD
     Source["Вихідний код (.edl)"]
     Lexer["Лексичний аналізатор <br> «Lexer(source, filename)» → набір токенів"]
-    Parser["Синтаксичний аналізатор <br> «Parse()» → AST"]
+    Parser["Синтаксичний аналізатор <br> «Parse(tokens)» → AST"]
     Translator["Транслятор <br> «Translate(expressions)» → набір команд"]
     Context["Стекова машина <br> «Context»"]
     Environment["Оточення <br> «Environment» + «Intrinsics»"]

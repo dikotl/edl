@@ -19,7 +19,7 @@
 				},
 				{
 					"name": "keyword.control.edl",
-					"match": "\\b(if|else)\\b"
+					"match": "\\b(if|else|foreach|in)\\b"
 				},
 				{
 					"name": "keyword.operator.edl",

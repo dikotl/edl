@@ -173,3 +173,36 @@ public class IfCommand(ICommand[] trueBranch, ICommand[] falseBranch) : ICommand
         return $"branch\nthen:\n{indent}{thenBody}\n{indent}{elseBody}";
     }
 }
+
+public class ForeachCommand : ICommand
+{
+    public void Execute(Context context)
+    {
+        var iterable = context.Pop();
+        var body = context.Pop();
+
+        switch (iterable)
+        {
+        case StringValue str:
+            foreach (var chr in str.Data)
+            {
+                context.Push(body);
+                context.Push(new IntValue(chr));
+                context.Call(1);
+            }
+            break;
+
+        case ListValue list:
+            foreach (var element in list.Elements)
+            {
+                context.Push(body);
+                context.Push(element);
+                context.Call(1);
+            }
+            break;
+
+        default:
+            throw new Exception($"Cannot iterate over {iterable.GetType().Name} value");
+        }
+    }
+}

@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Cocona;
-using Edl.Core.Ast;
-using Edl.Core.Interpreter;
 using Edl.Core.Parsing;
+using Edl.Core.Translation;
+using Edl.Core.VirtualMachine;
 
 class Program
 {

@@ -1,4 +1,3 @@
-using Edl.Core.Ast;
 using Edl.Core.Parsing;
 
 namespace Edl.Tests;

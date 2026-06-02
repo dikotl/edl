@@ -1,4 +1,4 @@
-using Edl.Core.Interpreter;
+using Edl.Core.VirtualMachine;
 
 namespace Edl.Tests;
 

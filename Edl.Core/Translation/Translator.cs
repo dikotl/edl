@@ -1,0 +1,117 @@
+using Edl.Core.Parsing;
+using Edl.Core.Shared;
+using Edl.Core.VirtualMachine;
+
+namespace Edl.Core.Translation;
+
+public enum VariableSource
+{
+    Local,          // It was initialized before the first use.
+    Environment,    // It wasn't initialized before the first use.
+    Argument,       // It comes from the argument.
+}
+
+public struct Translator()
+{
+    private static readonly Dictionary<string, IMacro> MACROS = Registry.Load<IMacro, MacroAttribute>();
+
+    public readonly List<ICommand> Commands { get; } = [];
+    public readonly Dictionary<string, IMacro> Macros { get; init; } = MACROS;
+    public Dictionary<string, VariableSource> Variables { get; set; } = [];
+
+    public static List<ICommand> Translate(IList<Expression> expressions)
+    {
+        var translator = new Translator();
+        if (expressions.Count > 0)
+        {
+            foreach (var expression in expressions.SkipLast(1))
+            {
+                translator.Translate(expression);
+                translator.Commands.Add(new PopCommand());
+            }
+            translator.Translate(expressions.Last());
+        }
+        else
+        {
+            translator.Commands.Add(new PushCommand(new IntValue(0)));
+        }
+        return translator.Commands;
+    }
+
+    public void Translate(Expression expression)
+    {
+        switch (expression)
+        {
+        case IntLiteral i:
+            Commands.Add(new PushCommand(new IntValue(i.Value, i.Location)));
+            break;
+
+        case FloatLiteral f:
+            Commands.Add(new PushCommand(new FloatValue(f.Value, f.Location)));
+            break;
+
+        case StringLiteral s:
+            Commands.Add(new PushCommand(new StringValue(s.Data, s.Location)));
+            break;
+
+        case Identifier id:
+            Variables.TryAdd(id.Name, VariableSource.Environment);
+            Commands.Add(new LoadCommand(id.Name));
+            break;
+
+        case Call call:
+            if (Macros.TryGetValue(call.Function.Name, out var macro))
+            {
+                macro.Translate(call, this);
+            }
+            else
+            {
+                Variables.TryAdd(call.Function.Name, VariableSource.Environment);
+                Commands.Add(new LoadCommand(call.Function.Name));
+                foreach (var arg in call.Arguments)
+                {
+                    Translate(arg);
+                }
+                Commands.Add(new CallCommand(call.Arguments.Length));
+            }
+            break;
+
+        case Function func:
+            TranslateFunction(func);
+            break;
+
+        case ExpressionList list:
+            foreach (var item in list.Items)
+            {
+                Translate(item);
+            }
+            Commands.Add(new MakeListCommand(list.Items.Length, list.Location));
+            break;
+
+        default:
+            throw new NotImplementedException($"Translation of {expression.GetType().Name} is not implemented.");
+        }
+    }
+
+    private void TranslateFunction(Function func)
+    {
+        var parameters = new string[func.Parameters.Length];
+
+        for (int i = 0; i < func.Parameters.Length; i++)
+        {
+            Variables[func.Parameters[i].Name] = VariableSource.Argument;
+            parameters[i] = func.Parameters[i].Name;
+        }
+
+        var oldVariables = Variables;
+        Variables = [];
+        var body = Translate(func.Body).ToArray();
+        var captures = Variables
+                .Where(v => v.Value == VariableSource.Environment)
+                .Select(v => v.Key)
+                .ToArray();
+        Variables = oldVariables;
+
+        Commands.Add(new MakeClosureCommand(parameters, captures, body, func.Location));
+    }
+}

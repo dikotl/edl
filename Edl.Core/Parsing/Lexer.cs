@@ -39,10 +39,6 @@ public class Lexer(string source, string filename)
         case null:
             return null;
 
-        case '#':
-            while (Char is not (null or '\r' or '\n')) Advance();
-            return NextToken();
-
         case '\r':
             Advance();
             if (Char is '\n') Advance();
@@ -277,33 +273,6 @@ public class Lexer(string source, string filename)
         }
     }
 
-    /// <summary>
-    /// Parses a character after the backslash (\).
-    /// </summary>
-    /// <returns>
-    /// Replacement character, or null if escaped character is not allowed.
-    /// </returns>
-    private char? ParseEscapeSequence() => Advance() switch
-    {
-        'n' => '\n',
-        'r' => '\r',
-        't' => '\t',
-        '\\' => '\\',
-        '\'' => '\'',
-        '"' => '"',
-        _ => null
-    };
-
-    /// <summary>
-    /// Heuristic to determine if ' is starting a char literal ('x')
-    /// or a quoted symbol ('foo)
-    /// </summary>
-    private bool IsCharLiteral() =>
-        // '\n' (length 4 from start).
-        Peek(1) == '\\' && Peek(3) == '\'' ||
-        // 'a' (length 3 from start).
-        Peek(2) == '\'';
-
     private void SkipWhitespace()
     {
         while (!IsEOF)
@@ -329,7 +298,7 @@ public class Lexer(string source, string filename)
         }
     }
 
-    // --- Cursor Management ---
+    #region Cursor Management
 
     private char Peek(int offset = 0)
     {
@@ -371,4 +340,6 @@ public class Lexer(string source, string filename)
         }
         Advance();
     }
+
+    #endregion Cursor Management
 }
